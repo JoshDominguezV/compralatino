@@ -21,4 +21,4 @@ COPY --from=builder /app/src ./src
 COPY --from=builder /app/tsconfig.json ./tsconfig.json
 COPY --from=builder /app/.next ./.next
 EXPOSE 3001
-CMD ["sh", "-c", "npx prisma db push --skip-generate && npm run start -- -p ${PORT:-3001}"]
+CMD ["sh", "-c", "npx prisma db push --skip-generate && npx tsx prisma/seed.ts && npm run start -- -p ${PORT:-3001}"]
