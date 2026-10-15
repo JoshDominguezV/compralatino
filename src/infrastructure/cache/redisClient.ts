@@ -8,6 +8,13 @@ export const redis = globalForRedis.redis ?? new Redis(process.env.REDIS_URL ?? 
 });
 if (process.env.NODE_ENV !== 'production') globalForRedis.redis = redis;
 
+let redisErrorLogged = false;
+redis.on('error', (error: Error) => {
+  if (redisErrorLogged) return;
+  redisErrorLogged = true;
+  console.warn(`Redis no disponible, se usan límites en memoria: ${error.message}`);
+});
+
 const localWindows = new Map<string, { count: number; expiresAt: number }>();
 
 export async function rateLimit(key: string, limit: number, windowSeconds: number): Promise<boolean> {
