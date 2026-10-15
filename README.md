@@ -114,9 +114,15 @@ El repositorio incluye un `Dockerfile`, así que puedes desplegarlo como **Web S
 
 Render asigna el puerto mediante `PORT`; el contenedor ya lo usa.
 
-## Usuario administrador de demostración
+## Credenciales de prueba
 
-`npm run db:seed` crea un usuario administrador con contraseña de demostración definida en `prisma/seed.ts`. **Cámbiala antes de publicar cualquier entorno real**, y no uses esas credenciales en producción.
+`npm run db:seed` crea el usuario administrador de prueba:
+
+| Rol | Correo | Contraseña |
+| --- | --- | --- |
+| Administrador | `admin@compralatino.local` | `CompraLatino2026` |
+
+Para probar como usuario normal, crea una cuenta desde `/register`. Estas credenciales son solo para demostración: **cámbialas antes de usar cualquier entorno real**.
 
 ## Estructura
 
