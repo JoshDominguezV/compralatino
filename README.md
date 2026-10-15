@@ -140,6 +140,4 @@ prisma/                  Esquema y datos de demostración
 - Nunca subas el archivo `.env`; ya está excluido por `.gitignore`.
 - El MFA y el pago son simulados. Para producción, integra un proveedor de códigos temporales y una pasarela de pago.
 
-## Licencia
 
-Proyecto académico. Ajusta esta sección antes de reutilizar el código.
