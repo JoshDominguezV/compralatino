@@ -17,6 +17,8 @@ ENV PORT=3001
 COPY --from=builder /app/package.json /app/package-lock.json ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/tsconfig.json ./tsconfig.json
 COPY --from=builder /app/.next ./.next
 EXPOSE 3001
-CMD ["sh", "-c", "npm run start -- -p ${PORT:-3001}"]
+CMD ["sh", "-c", "npx prisma db push --skip-generate && npm run start -- -p ${PORT:-3001}"]
